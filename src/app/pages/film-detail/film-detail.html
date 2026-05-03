@@ -1,12 +1,18 @@
-@if (film(); as f) {
+@if (filmsService.isLoading()) {
+  <p class="film-detail__loading">Loading...</p>
+} @else if (film(); as f) {
   <div class="film-detail">
     <img class="film-detail__poster" [src]="f.posterUrl" [alt]="f.title" />
     <div class="film-detail__info">
       <h1>{{ f.title }}</h1>
-      <p class="film-detail__meta">{{ f.year }} · {{ f.genre }} · {{ f.duration | duration }} · ★ {{ f.rating }}</p>
+      <p class="film-detail__meta">
+        {{ f.year }} &middot; {{ f.genre }} &middot; {{ f.duration | duration }} &middot; &#9733; {{ f.rating }}
+      </p>
       <p class="film-detail__description">{{ f.description }}</p>
+      <a class="film-detail__back" routerLink="/">&#8592; Back to films</a>
     </div>
   </div>
 } @else {
-  <p>Film not found.</p>
+  <p class="film-detail__loading">Film not found.</p>
+  <a class="film-detail__back" routerLink="/">&#8592; Back to films</a>
 }
