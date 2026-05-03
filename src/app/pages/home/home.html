@@ -1,1 +1,24 @@
-<h1>Films</h1>
+<div class="catalog">
+  <div class="catalog__search">
+    <input
+      appAutofocus
+      class="catalog__input"
+      type="search"
+      placeholder="Search films..."
+      [value]="query()"
+      (input)="onSearch($event)"
+    />
+  </div>
+
+  @if (filmsService.isLoading()) {
+    <p class="catalog__message">Loading...</p>
+  } @else if (filteredFilms().length === 0) {
+    <p class="catalog__message">Nothing found.</p>
+  } @else {
+    <div class="catalog__grid">
+      @for (film of filteredFilms(); track film.id) {
+        <app-film-card [film]="film" (toggleFavorite)="onToggleFavorite($event)" />
+      }
+    </div>
+  }
+</div>

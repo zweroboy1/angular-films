@@ -1,0 +1,55 @@
+@use '../../../styles/variables' as *;
+
+.catalog {
+  &__search {
+    margin-bottom: 1.75rem;
+  }
+
+  &__input {
+    width: 100%;
+    max-width: 480px;
+    padding: 0.65rem 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 2px solid $powder-blue;
+    border-radius: 10px;
+    background: #fff;
+    color: $text-dark;
+    outline: none;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: $dusty-taupe;
+    }
+
+    &::placeholder {
+      color: $text-subtle;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 700px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 500px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__message {
+    color: $text-muted;
+    font-size: 1rem;
+    margin-top: 2rem;
+    text-align: center;
+  }
+}
