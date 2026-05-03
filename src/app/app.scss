@@ -1,11 +1,15 @@
+@use '../styles/variables' as *;
+
 .content {
   flex: 1;
   padding: 2rem;
+  padding-top: calc(#{$header-height} + 2rem);
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
 
   @media (max-width: 600px) {
     padding: 1.25rem 1rem;
+    padding-top: calc(#{$header-height} + 1.25rem);
   }
 }
