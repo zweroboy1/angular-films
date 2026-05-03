@@ -1,0 +1,25 @@
+@use '../../../styles/variables' as *;
+
+.footer {
+  background-color: $dusty-taupe;
+  padding: 1rem 2rem;
+
+  &__inner {
+    max-width: $max-width;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $text-light;
+    font-size: 0.875rem;
+
+    a {
+      color: $vanilla-custard;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
