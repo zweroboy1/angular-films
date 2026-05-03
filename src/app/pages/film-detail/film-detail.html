@@ -1,2 +1,12 @@
-<h1>Film #{{ id() }}</h1>
-<p>Film detail page — id from URL: <strong>{{ id() }}</strong></p>
+@if (film(); as f) {
+  <div class="film-detail">
+    <img class="film-detail__poster" [src]="f.posterUrl" [alt]="f.title" />
+    <div class="film-detail__info">
+      <h1>{{ f.title }}</h1>
+      <p class="film-detail__meta">{{ f.year }} · {{ f.genre }} · {{ f.duration | duration }} · ★ {{ f.rating }}</p>
+      <p class="film-detail__description">{{ f.description }}</p>
+    </div>
+  </div>
+} @else {
+  <p>Film not found.</p>
+}
