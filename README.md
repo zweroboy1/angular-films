@@ -1,59 +1,88 @@
-# AngularFilms
+# Film Collection
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.25.
+A movie catalog SPA built with **Angular 20** as part of the [RSS Angular Intro Task](https://github.com/rolling-scopes-school/tasks/blob/master/angular/tasks/angular-intro-task/README.md).
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Browse a film catalog with poster, title, year, genre, rating, and duration
+- Live search — filter films by title in real time
+- Toggle films as favorites
+- Film detail page with full information
+- SPA routing with lazy-loaded components
+- Custom `duration` pipe (minutes → "2h 30min")
+- Custom `autofocus` directive
+- Breadcrumbs on every page
+- Responsive layout (mobile-friendly)
+- 404 page
 
-```bash
-ng serve
-```
+## Tech Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Angular 20 (Standalone Components, Zoneless)
+- TypeScript (strict mode)
+- Angular Signals — no RxJS in application code
+- SCSS (BEM, CSS variables)
+- Angular Router with `withComponentInputBinding()`
+- `httpResource()` for data fetching
 
-## Code scaffolding
+## Getting Started
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Prerequisites
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- Node.js 18+
+- Angular CLI 20+
 
 ```bash
-ng test
+npm install -g @angular/cli@20
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### Install dependencies
 
 ```bash
-ng e2e
+npm install
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Run development server
 
-## Additional Resources
+```bash
+npm start
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Open [http://localhost:4200](http://localhost:4200) in your browser.
+
+### Build for production
+
+```bash
+npm run build
+```
+
+Output will be in `dist/angular-films/browser/`.
+
+### Run linter
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```
+src/app/
+├── core/                  # Services, models
+│   ├── films.service.ts   # Film data, favorites, signal-based
+│   ├── breadcrumbs.service.ts
+│   └── film.model.ts
+├── layout/                # Header, Breadcrumbs, Footer
+├── pages/                 # Route components
+│   ├── home/              # Catalog + search
+│   ├── film-detail/       # Film detail page
+│   ├── about/             # About page
+│   └── not-found/         # 404
+└── shared/                # Reusable components, pipes, directives
+    ├── film-card/
+    ├── pipes/duration.pipe.ts
+    └── directives/autofocus.directive.ts
+```
+
+## Deploy
+
+Deployed on Netlify. Configuration in `netlify.toml`.
